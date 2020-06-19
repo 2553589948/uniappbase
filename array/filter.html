@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组filter方法</title>
+</head>
+<body>
+    <div class="search_wrap">
+        <div class="header">
+            <input id="search_input" type="text" oninput="handleChange()" />
+        </div>
+    </div>
+    <script>
+        function handleChange () {
+            // debounce(oprateVal(), 3000)
+            let val = document.getElementById('search_input').value.trim()
+            console.log(val)
+            if (val != '') {
+                let newArr = arr.filter((item, index) => {
+                    return item.value.includes(val)
+                })
+                console.log(newArr)
+            }
+        }
+
+        function oprateVal () {
+            let val = document.getElementById('search_input').value.trim()
+            console.log(val)
+            if (val != '') {
+                let newArr = arr.filter((item, index) => {
+                    return item.value.includes(val)
+                })
+                // console.log(newArr)
+            }
+        }
+
+        // 节流函数
+        function throttle (func, wait) {
+            let timer // 定时器
+            return function (...args) {
+                let context = this
+                // 如果timer存在, 说明函数还未执行, 也就是距离上次函数执行未间隔指定的时间
+                if (timer) return
+                // 如果函数执行之后还有函数在触发, 再延迟执行
+                timer = setTimeout(function(...args) {
+                    // 当函数执行时, 让timer为null
+                    timer = null
+                    func.apply(context, args)
+                }, wait)
+            }
+        }
+
+        // 节流函数时间戳版
+        function throttle2 (func, wait) {
+            let pre = 0
+            return function () {
+                let now = Date.now()
+                let context = this
+                let args = arguments
+                if (now - pre > wait) {
+                    func.apply(context, args)
+                    pre = now
+                }
+            }
+        }
+
+        // 防抖函数
+        function debounce(func, wait) {
+            let timeout
+            return function () {
+                let context = this;
+                let args = arguments;
+
+                if (timeout) clearTimeout(timeout)
+                
+                timeout = setTimeout(() => {
+                    func.apply(context, args)
+                }, wait)
+            }
+        }
+        
+
+        let arr = [
+            {
+                id: 1,
+                value: '英语四级'
+            },
+            {
+                id: 2,
+                value: '二级技工'
+            },
+            {
+                id: 3,
+                value: '建造工程师'
+            },
+            {
+                id: 4,
+                value: '计算机四级'
+            },
+            {
+                id: 5,
+                value: '英语六级'
+            },
+            {
+                id: 6,
+                value: '网络工程师'
+            }
+        ]
+
+    </script>
+</body>
+</html>
