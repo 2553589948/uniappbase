@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组中对象去重</title>
+</head>
+<body>
+    <script>
+        let arr = [
+            {
+                id: 1,
+                value: '你好'
+            },
+            {
+                id: 2,
+                value: '哈哈'
+            },
+            {
+                id: 3,
+                value: '嘻嘻'
+            },
+            {
+                id: 4,
+                value: '呵呵'
+            },
+            {
+                id: 2,
+                value: '嘿嘿'
+            },
+            {
+                id: 3,
+                value: '呜呜'
+            }
+        ]
+
+        // 第一种 利用对象访问属性的方法, 判断对象中是否存在key
+        let newArr = []
+        let obj = {}
+        for (let i = 0; i < arr.length; i++) {
+            if (!obj[arr[i].id]) {
+                newArr.push(arr[i])
+                obj[arr[i].id] = true
+            }
+        }
+        console.log(newArr)
+
+        // 第二种 利用reduce方法遍历数组, 第一个参数是遍历所需要执行的函数, 第二个参数是需要执行的函数第一个参数的初始值,next数组每一项
+        let obj2 = {}
+        let arr2 = arr.reduce((item, next) => {
+            if (!obj2[next.id]) {
+                item.push(next)
+                obj2[next.id] = true
+            }
+            return item
+        }, [])
+        console.log(arr2)
+    </script>
+</body>
+</html>

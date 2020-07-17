@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面内容够与不够，始终把footer固定在底部</title>
+    <style>
+        html, body{ /* 微信小程序中可改为page */
+            height:100%;
+            margin:0;
+            padding:0;
+        }
+        .wrap { /* 要与不要可自己选择 */
+            height: 100%;
+        }
+        .top{
+            min-height:100%;
+            background: #eee;
+        }
+        header{ /* 要与不要可自己选择 */
+            background-color: #f00;
+        }
+        .main-content{
+            padding-bottom: 220px; /*padding-bottom必须要等于或大于test的height值, (当内容和超出一屏时)这个距离减去底部容器之间的高度等于内容与底部容器的距离*/
+            font-size: 42px;
+        }
+        .main-content .content {
+            background: #fff;
+        }
+        .test {
+            padding-bottom: 60px; /* 底部容器与视窗底部之间的距离 */
+            box-sizing: border-box;
+            height:160px;
+            margin-top: -160px;
+            width: 100%;
+        }
+        .test .botton1{
+            height: 100px;
+            background-color: orangered;
+            width: 650px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="top">
+        <header>header</header>
+        <div class="main-content">
+            <div class="content">
+                contentcontentcontentconten黄金大奖赛发哈就案件看发觉卡快放开放开发哈就阿卡开发和和罚款扣分罚款很费解啊卡卡富豪饭局奥卡福浪费发哈卡卡方法论合法卡卡克利夫兰发很疯狂方法卡卡浪费发哈卡夫卡发放恢复开放卡啊回复放假咯卡看复活节卡卡卡开发加分扣分扣分JFK复合肥罚款罚款扣分黄金大奖赛发哈就案件看发觉卡快放开放开发哈就阿卡开发和和罚款扣分罚款很金大奖赛发哈就案件看发觉卡快放开放开发哈就阿卡开发和和罚款扣分罚款金大奖赛发哈就案件看发觉卡快放开放开发哈就阿卡开发和和罚款扣分罚款很费解啊卡卡富豪饭局奥卡福浪费发哈卡卡方法论合法卡卡克利夫兰发
+            </div>
+        </div>
+    </div>
+    <div class="test">
+        <div class="botton1">footer</div>
+    </div>
+</div>
+</body>
+</html>
